@@ -1,0 +1,9 @@
+# Only the public page and the media it uses are published.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/media/
+/media/google-square-mug-*
+/media/web-banner-*
+.DS_Store

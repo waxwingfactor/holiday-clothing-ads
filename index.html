@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Holiday ads with AI models</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #F6F2EA; --ink: #22201C; --soft: #6B655B; --green: #1F3A2C; --line: #DDD5C7; --cran: #9E2235; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.5 "Hanken Grotesk", system-ui, sans-serif; }
+  main { max-width: 1120px; margin: 0 auto; padding: 56px 28px 96px; }
+  h1, h2 { font-family: "Libre Caslon Display", Georgia, serif; font-weight: 400; color: var(--green); margin: 0; }
+  h1 { font-size: 46px; line-height: 1.05; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  h2 { font-size: 28px; line-height: 1.1; margin-bottom: 22px; }
+  section { margin-top: 76px; }
+  figure { margin: 0; }
+  figcaption { font-size: 13px; color: var(--soft); margin-top: 8px; letter-spacing: .02em; }
+  img, video { display: block; max-width: 100%; }
+
+  /* The ad: contained, never cropped, including fullscreen. */
+  .ad { margin: 48px auto 0; max-width: 400px; }
+  .ad video { width: 100%; aspect-ratio: 9 / 16; height: auto; background: #000; object-fit: contain; border-radius: 4px; }
+  video:fullscreen { object-fit: contain; }
+
+  .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pair img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; background: #EEEEEC; }
+
+  .hands { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .hands img { width: 100%; height: auto; border-radius: 3px; }
+
+  .group + .group { margin-top: 44px; }
+  .label { font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--green); margin: 0 0 12px; }
+  /* Column widths follow each image's aspect ratio, so every image in a row is the same height. */
+  .ig, .g { display: grid; gap: 16px; align-items: end; }
+  .ig { grid-template-columns: .8fr .5625fr; max-width: 620px; }
+  .g { grid-template-columns: 1.91fr 1fr .8fr; }
+  .ig img, .g img { width: 100%; height: auto; border-radius: 3px; }
+
+  /* Mock homepage with the hero loop. */
+  .site { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
+  .site .bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 26px; font-size: 14px; }
+  .site .bar b { font-family: "Libre Caslon Display", Georgia, serif; font-weight: 400; font-size: 22px; letter-spacing: .3em; color: var(--green); }
+  .site .bar span { color: var(--soft); margin-left: 22px; }
+  .hero { position: relative; aspect-ratio: 16 / 9; background: #111; }
+  .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,11,8,.7) 0%, rgba(14,11,8,.45) 30%, rgba(14,11,8,0) 55%); }
+  .hero .copy { position: absolute; z-index: 1; left: 6%; top: 50%; transform: translateY(-50%); color: #FBF7F0; }
+  .hero .copy small { font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: 13px; }
+  .hero .copy div { font-family: "Libre Caslon Display", Georgia, serif; font-size: clamp(26px, 4.4vw, 56px); line-height: 1.02; margin: 10px 0 22px; }
+  .hero .copy span { display: inline-block; background: var(--cran); color: #FBF4EC; font-weight: 600; padding: 12px 28px; border-radius: 999px; font-size: 15px; }
+
+  @media (max-width: 760px) {
+    main { padding-top: 40px; }
+    h1 { font-size: 36px; }
+    .pairs, .hands { grid-template-columns: 1fr; }
+    .g { grid-template-columns: 1fr .8fr; }
+    .g figure:first-child { grid-column: 1 / -1; }
+    .hero .copy small { font-size: 9px; letter-spacing: .16em; }
+    .hero .copy div { font-size: 20px; margin: 4px 0 10px; }
+    .hero .copy span { font-size: 11px; padding: 6px 14px; }
+    .site .bar span { margin-left: 12px; }
+    .site .bar span:nth-child(-n+2) { display: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Holiday ads with AI models</h1>
+
+  <div class="ad">
+    <video controls playsinline preload="metadata" poster="media/holiday-ad-9x16-v1.jpg">
+      <source src="media/holiday-ad-9x16-v1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <section>
+    <h2>Product photo → in the ad</h2>
+    <div class="pairs">
+      <div class="pair">
+        <img src="media/product-juniper-v1.jpg" alt="Product photo of the Fair Isle sweater">
+        <img src="media/onmodel-juniper-yoke-v1.jpg" alt="The sweater on the model, frame from the ad">
+      </div>
+      <div class="pair">
+        <img src="media/product-fell-v1.jpg" alt="Product photo of the shawl-collar cardigan">
+        <img src="media/onmodel-fell-v1.jpg" alt="The cardigan on the model, frame from the ad">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Hands, 100% crops from the video</h2>
+    <div class="hands">
+      <a href="media/hands-mug-v1.jpg"><img src="media/hands-mug-v1.jpg" alt="Hands around a mug"></a>
+      <a href="media/hands-her-overhead-v1.jpg"><img src="media/hands-her-overhead-v1.jpg" alt="Her hands taking a gift, from above"></a>
+      <a href="media/hands-his-overhead-v1.jpg"><img src="media/hands-his-overhead-v1.jpg" alt="His hands letting go of the gift, from above"></a>
+      <a href="media/hands-couple-v1.jpg"><img src="media/hands-couple-v1.jpg" alt="Her hand on his arm"></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Every placement</h2>
+    <div class="group">
+      <p class="label">Instagram</p>
+      <div class="ig">
+        <figure><img src="media/ig-feed-4x5-v1.jpg" alt="Instagram feed ad"><figcaption>Feed 4:5</figcaption></figure>
+        <figure><img src="media/ig-story-9x16-v1.jpg" alt="Instagram Story ad"><figcaption>Story 9:16</figcaption></figure>
+      </div>
+    </div>
+    <div class="group">
+      <p class="label">Google</p>
+      <div class="g">
+        <figure><img src="media/google-landscape-1200x628-v1.jpg" alt="Google landscape image"><figcaption>1.91:1</figcaption></figure>
+        <figure><img src="media/google-square-1200x1200-v1.jpg" alt="Google square image"><figcaption>1:1</figcaption></figure>
+        <figure><img src="media/google-portrait-960x1200-v1.jpg" alt="Google portrait image"><figcaption>4:5</figcaption></figure>
+      </div>
+    </div>
+    <div class="group">
+      <p class="label">Website</p>
+      <div class="site">
+        <div class="bar"><b>WRENMOOR</b><div><span>Women</span><span>Men</span><span>Gifts</span><span>Bag (0)</span></div></div>
+        <div class="hero">
+          <video autoplay muted loop playsinline poster="media/web-hero-loop-v1.jpg"><source src="media/web-hero-loop-v1.mp4" type="video/mp4"></video>
+          <div class="copy"><small>The Holiday Edit</small><div>Made for the<br>long nights.</div><span>Shop gifts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
